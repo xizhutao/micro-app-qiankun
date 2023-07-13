@@ -1,9 +1,12 @@
 {
-  "name": "root",
+  "name": "micro-app-template",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "dev:main": "lerna run dev --scope react-vite-main"
+  },
   "devDependencies": {
     "lerna": "^6.6.1"
   }

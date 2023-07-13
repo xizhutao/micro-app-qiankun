@@ -26,8 +26,48 @@ import {
   Popover,
   theme,
 } from 'antd';
-import React, { useState } from 'react';
+import React, { useState  } from 'react';
 import  defaultProps from './config/proDefaultConfig' 
+const getMenu: any = () => {
+  return new Promise((resolve ) => {
+    return setTimeout(() => {
+      resolve([
+        {
+          menuName: '首页'
+        },
+        {
+          menuName: 'Vue 微应用',
+          // children: [
+          //   {
+          //     menuName: '测试'
+          //   }
+          // ]
+        },
+        {
+          menuName: 'React 微应用'
+        }
+      ])
+    } , 2000)
+  })
+}
+const menuPowerFilter = (menu: any[] , defaultMenu: any[]) => {
+  let result: any[] = []
+  defaultMenu.map((item: any) => {
+    menu.map((innerItem:any) => {
+      if(item.name === innerItem.menuName){
+        let routes: any[] = []
+        if(item.routes.length > 0 && innerItem.children.length > 0){
+          routes = menuPowerFilter(innerItem.children , item.routes)
+        }
+        result.push({
+          ...item,
+          routes: routes.length > 0 ? routes : null
+        })
+      }
+    })
+  })
+  return result
+}
 const Item: React.FC<{ children: React.ReactNode }> = (props) => {
   const { token } = theme.useToken();
   return (
@@ -315,12 +355,20 @@ const App: React.FC =  () => {
             }}
             menu={{
               collapsedShowGroupTitle: true,
+              request:async (_ , defaultMenuData) => {
+                console.log('defaultMenuData' , defaultMenuData)
+
+                const menu: any[] = await getMenu()
+               const result: any =  menuPowerFilter(menu , defaultMenuData)
+                
+                return result
+              }
             }}
             avatarProps={{
               src: 'https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg',
               size: 'small',
               title: 'JSONXI',
-              render: (props, dom) => {
+              render: (_, dom) => {
                 return (
                   <Dropdown
                     menu={{

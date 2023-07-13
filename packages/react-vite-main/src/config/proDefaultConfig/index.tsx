@@ -15,6 +15,12 @@ const defaultProps = {
           path: '/vue-child',
           name: 'Vue 微应用',
           icon: <MyIcon type='icon-vue' />,
+          // routes: [
+          //   {
+          //     path: '/vue-child/test',
+          //     name: '测试'
+          //   }
+          // ]
         },
         {
           path: '/react-child',
