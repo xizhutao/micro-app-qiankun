@@ -4,8 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "dev": "VITE_APP=local vite",
+    "build:test": "VITE_APP=test tsc && vite build",
+    "build:wh": "VITE_APP=wh tsc && vite build",
+    "build:xx": "VITE_APP=xx tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -14,6 +16,7 @@
     "@ant-design/pro-components": "^2.6.4",
     "@emotion/css": "^11.11.2",
     "antd": "^5.6.4",
+    "axios": "^1.4.0",
     "qiankun": "^2.10.11",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -88,7 +88,7 @@ const defaultProps = {
     contentWidth: "Fluid",
     colorPrimary: "#1677FF",
     siderMenuType: "group",
-    headerRender: false,
+    headerRender: true,
     title: '微前端架构模板',
     logo
   }

@@ -19,15 +19,17 @@ import {
 } from '@ant-design/pro-components';
 import { css } from '@emotion/css';
 import {
-  ConfigProvider,
   Divider,
   Dropdown,
   Input,
   Popover,
   theme,
 } from 'antd';
-import React, { useState  } from 'react';
+import React, { useState  , useCallback, useMemo, useReducer  } from 'react';
+import { userReducer , initState } from './store/reducers/user'
 import  defaultProps from './config/proDefaultConfig' 
+import UserContext from './store/context/user';
+console.log('123123' , import.meta.env.VITE_SOME_KEY)
 const getMenu: any = () => {
   return new Promise((resolve ) => {
     return setTimeout(() => {
@@ -50,6 +52,12 @@ const getMenu: any = () => {
     } , 2000)
   })
 }
+/**
+ * 获取权限菜单
+ * @param menu 异步获取的菜单
+ * @param defaultMenu 默认的菜单列表
+ * @returns 有权限的菜单
+ */
 const menuPowerFilter = (menu: any[] , defaultMenu: any[]) => {
   let result: any[] = []
   defaultMenu.map((item: any) => {
@@ -305,6 +313,12 @@ const App: React.FC =  () => {
   });
   const navigate = useNavigate()
   const [num, _] = useState(40);
+  const [users , dispatch] = useReducer(userReducer , initState)
+  const _dispatch = useCallback(dispatch , [])  //缓存函数
+  const contextValue: any = useMemo(() => ({
+   users,
+    dispatch: _dispatch
+  }) , [_dispatch , users]) //渲染优化？
   if (typeof document === 'undefined') {
     return <div />;
   }
@@ -316,12 +330,13 @@ const App: React.FC =  () => {
         overflow: 'auto',
       }}
     >
+    <UserContext.Provider value={contextValue}>
       <ProConfigProvider hashed={false}>
-        <ConfigProvider
+        {/* <ConfigProvider
           getTargetContainer={() => {
             return document.getElementById('test-pro-layout') || document.body;
           }}
-        >
+        > */}
           <ProLayout
             prefixCls="my-prefix"
             bgLayoutImgList={[
@@ -455,20 +470,27 @@ const App: React.FC =  () => {
               token={{
                 paddingInlinePageContainerContent: num,
               }}
-              // extra={[
-              //   <Button key="3">操作</Button>,
-              //   <Button key="2">操作</Button>,
-              //   <Button
-              //     key="1"
-              //     type="primary"
-              //     onClick={() => {
-              //       setNum(num > 0 ? 0 : 40);
-              //     }}
-              //   >
-              //     主操作
-              //   </Button>,
-              // ]}
-              // subTitle="简单的描述"
+              extra={[
+                // <Button key="3">操作</Button>,
+                // <Button key="2">操作</Button>,
+                // <Button
+                //   key="1"
+                //   type="primary"
+                //   onClick={() => {
+                //     dispatch({
+                //       type: 'update' , 
+                //       payload: 
+                //         {
+                //           name: 'xizhutao' , 
+                //           age: 26
+                //         }
+                //     })
+                //   }}
+                // >
+                //   更新 users
+                // </Button>,
+              ]}
+              subTitle={`${users[0].name} ${users[0].age}`}
               // footer={[
               //   <Button key="3">重置</Button>,
               //   <Button key="2" type="primary">
@@ -500,8 +522,9 @@ const App: React.FC =  () => {
               disableUrlParams={false}
             />
           </ProLayout>
-        </ConfigProvider>
+        {/* </ConfigProvider> */}
       </ProConfigProvider>
+    </UserContext.Provider>
     </div>
   );
 };
