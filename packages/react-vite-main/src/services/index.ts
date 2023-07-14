@@ -4,5 +4,6 @@ export const getConfig = (data:any) => request({
     headers: {
         'Content-Type': 'application/json',
     },
+    url: '/api/test',
     params: data
 })

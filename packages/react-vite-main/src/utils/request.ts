@@ -1,19 +1,19 @@
 import axios from 'axios'
 import storage from './storage'
-import {useNavigate} from 'react-router-dom'
 import profix from '@/services/domain'
+console.log(
+    'import.meta.env.VITE_APP', import.meta.env.VITE_APP
+)
 const APP_ENV: any = import.meta.env.VITE_APP.toLocaleUpperCase()
 const NODE_ENV: any = import.meta.env.DEV ? 'DEV' : 'PROD'
 const damain = `${APP_ENV}_${NODE_ENV}`
 const baseURL = profix[damain as keyof  typeof profix]
-const navigate = useNavigate()
 import {message} from 'antd'
 const request = axios.create({
     timeout: 6000,
     baseURL,
     withCredentials: true, //允许携带cookie
 })
-
 // 请求拦截器
 request.interceptors.request.use((config) => {
     const token = storage.getToken
@@ -31,7 +31,7 @@ axios.interceptors.response.use(function (response) {
     if (res?.code === '233' || res?.code === '235' || res?.code === '234') {
       message.warning(res.msg);
       localStorage.setItem('token', ''); //清空token跳转登录页
-      navigate('/user/login');
+      window.location.href = `${baseURL}/login` //跳转登录页
       return;
     }
     if (res?.code !== '0000') {

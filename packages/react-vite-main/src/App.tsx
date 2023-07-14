@@ -29,7 +29,6 @@ import React, { useState  , useCallback, useMemo, useReducer  } from 'react';
 import { userReducer , initState } from './store/reducers/user'
 import  defaultProps from './config/proDefaultConfig' 
 import UserContext from './store/context/user';
-console.log('123123' , import.meta.env.VITE_SOME_KEY)
 const getMenu: any = () => {
   return new Promise((resolve ) => {
     return setTimeout(() => {
