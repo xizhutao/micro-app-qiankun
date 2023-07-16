@@ -39,7 +39,7 @@ micro-app-qiankun
 ├─package.json
 ├─yarn.lock
 ├─packages
-|    ├─vue-webpack-child
+|    ├─vue-webpack-child # 子应用
 |    |         ├─.browserslistrc
 |    |         ├─.eslintrc.js
 |    |         ├─babel.config.js
@@ -49,15 +49,15 @@ micro-app-qiankun
 |    |         ├─vue.config.js
 |    |         ├─src
 |    |         |  ├─App.vue
-|    |         |  ├─main.ts
+|    |         |  ├─main.ts #入口文件
 |    |         |  ├─public-path.js
 |    |         |  ├─shims-vue.d.ts
-|    |         |  ├─views
+|    |         |  ├─views #路由页面
 |    |         |  |   ├─AboutView.vue
 |    |         |  |   └HomeView.vue
-|    |         |  ├─store
+|    |         |  ├─store #vuex 集中状态管理
 |    |         |  |   └index.ts
-|    |         |  ├─router
+|    |         |  ├─router 路由页
 |    |         |  |   └index.ts
 |    |         |  ├─components
 |    |         |  |     └HelloWorld.vue
@@ -66,7 +66,7 @@ micro-app-qiankun
 |    |         ├─public
 |    |         |   ├─favicon.ico
 |    |         |   └index.html
-|    ├─react-vite-main
+|    ├─react-vite-main 主应用
 |    |        ├─.eslintrc.cjs
 |    |        ├─index.html
 |    |        ├─package-lock.json
@@ -79,21 +79,21 @@ micro-app-qiankun
 |    |        |  ├─App.css
 |    |        |  ├─App.tsx
 |    |        |  ├─index.css
-|    |        |  ├─main.tsx
+|    |        |  ├─main.tsx #入口文件
 |    |        |  ├─vite-env.d.ts
-|    |        |  ├─utils
-|    |        |  |   ├─request.ts
-|    |        |  |   └storage.ts
-|    |        |  ├─store
+|    |        |  ├─utils 
+|    |        |  |   ├─request.ts #封装的 axios
+|    |        |  |   └storage.ts #封装的操作 localStorage 的函数
+|    |        |  ├─store #集中状态管理
 |    |        |  |   ├─reducers
 |    |        |  |   |    └user.ts
 |    |        |  |   ├─context
 |    |        |  |   |    └user.ts
-|    |        |  ├─services
-|    |        |  |    ├─domain.ts
+|    |        |  ├─services 
+|    |        |  |    ├─domain.ts #维护域名
 |    |        |  |    └index.ts
 |    |        |  ├─routes
-|    |        |  |   └index.tsx
+|    |        |  |   └index.tsx #维护路由
 |    |        |  ├─pages
 |    |        |  |   ├─MicroApp
 |    |        |  |   |    └index.tsx
@@ -101,10 +101,10 @@ micro-app-qiankun
 |    |        |  |   |     └index.tsx
 |    |        |  |   ├─DashBoard
 |    |        |  |   |     └index.tsx
-|    |        |  ├─micro
+|    |        |  ├─micro #注册子应用
 |    |        |  |   └index.ts
 |    |        |  ├─config
-|    |        |  |   ├─proDefaultConfig
+|    |        |  |   ├─proDefaultConfig #ProComponent 配置文件
 |    |        |  |   |        └index.tsx
 |    |        |  ├─assets
 |    |        |  |   ├─logo.png
