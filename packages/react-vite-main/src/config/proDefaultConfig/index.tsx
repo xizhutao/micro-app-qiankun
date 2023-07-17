@@ -8,11 +8,11 @@ const defaultProps = {
       routes: [
         {
           path: '/dashboard',
-          name: '首页',
+          name: '分析页',
           icon: <MyIcon type='icon-shujukanban' />,
         },
         {
-          path: '/vue-child',
+          path: '/vue-child/*',
           name: 'Vue 微应用',
           icon: <MyIcon type='icon-vue' />,
           // routes: [

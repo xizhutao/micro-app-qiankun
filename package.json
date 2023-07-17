@@ -5,7 +5,8 @@
     "packages/*"
   ],
   "scripts": {
-    "dev:main": "lerna run dev --scope react-vite-main"
+    "dev:main": "yarn workspace react-vite-main dev",
+    "dev:child": "yarn workspace vue-webpack-child serve"
   },
   "devDependencies": {
     "lerna": "^6.6.1"

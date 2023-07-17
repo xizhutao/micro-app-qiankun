@@ -2,10 +2,8 @@ import {
   CaretDownFilled,
   DoubleRightOutlined,
   GithubFilled,
-  InfoCircleFilled,
   LogoutOutlined,
   PlusCircleFilled,
-  QuestionCircleFilled,
   SearchOutlined,
 } from '@ant-design/icons';
 import type { ProSettings } from '@ant-design/pro-components';
@@ -18,6 +16,7 @@ import {
   SettingDrawer,
 } from '@ant-design/pro-components';
 import { css } from '@emotion/css';
+import './App.less'
 import {
   Divider,
   Dropdown,
@@ -311,7 +310,7 @@ const App: React.FC =  () => {
     fixSiderbar: true,
   });
   const navigate = useNavigate()
-  const [num, _] = useState(40);
+  const [num, _] = useState(10);
   const [users , dispatch] = useReducer(userReducer , initState)
   const _dispatch = useCallback(dispatch , [])  //缓存函数
   const contextValue: any = useMemo(() => ({
@@ -407,9 +406,11 @@ const App: React.FC =  () => {
                 props.layout !== 'side' && document.body.clientWidth > 1400 ? (
                   <SearchInput />
                 ) : undefined,
-                <InfoCircleFilled key="InfoCircleFilled" />,
-                <QuestionCircleFilled key="QuestionCircleFilled" />,
-                <GithubFilled key="GithubFilled" />,
+                // <InfoCircleFilled key="InfoCircleFilled" />,
+                // <QuestionCircleFilled key="QuestionCircleFilled" />,
+                <GithubFilled key="GithubFilled" onClick={() => {
+                  window.open('https://github.com/xizhutao/micro-app-qiankun')
+                }} />,
               ];
             }}
             headerTitleRender={(logo, title, _) => {
@@ -461,6 +462,10 @@ const App: React.FC =  () => {
               if(props.pathname.includes('/vue-child')){
                 return 'vue 微应用'
               }
+              if(props.pathname.includes('/dashboard')){
+                return '分析页'
+              }
+              console.log('defaultPageTitle' , defaultPageTitle)
               return defaultPageTitle
             }}
             {...settings}
@@ -489,7 +494,7 @@ const App: React.FC =  () => {
                 //   更新 users
                 // </Button>,
               ]}
-              subTitle={`${users[0].name} ${users[0].age}`}
+              // subTitle={`${users[0].name} ${users[0].age}`}
               // footer={[
               //   <Button key="3">重置</Button>,
               //   <Button key="2" type="primary">
