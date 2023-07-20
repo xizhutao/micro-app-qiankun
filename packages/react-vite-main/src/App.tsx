@@ -7,7 +7,7 @@ import {
   SearchOutlined,
 } from '@ant-design/icons';
 import type { ProSettings } from '@ant-design/pro-components';
-import {Outlet  , useNavigate} from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import {
   PageContainer,
   ProCard,
@@ -24,12 +24,12 @@ import {
   Popover,
   theme,
 } from 'antd';
-import React, { useState  , useCallback, useMemo, useReducer  } from 'react';
-import { userReducer , initState } from './store/reducers/user'
-import  defaultProps from './config/proDefaultConfig' 
+import React, { useState, useCallback, useMemo, useReducer } from 'react';
+import { userReducer, initState } from './store/reducers/user'
+import defaultProps from './config/proDefaultConfig'
 import UserContext from './store/context/user';
 const getMenu: any = () => {
-  return new Promise((resolve ) => {
+  return new Promise((resolve) => {
     return setTimeout(() => {
       resolve([
         {
@@ -47,7 +47,7 @@ const getMenu: any = () => {
           menuName: 'React 微应用'
         }
       ])
-    } , 2000)
+    }, 2000)
   })
 }
 /**
@@ -56,14 +56,14 @@ const getMenu: any = () => {
  * @param defaultMenu 默认的菜单列表
  * @returns 有权限的菜单
  */
-const menuPowerFilter = (menu: any[] , defaultMenu: any[]) => {
+const menuPowerFilter = (menu: any[], defaultMenu: any[]) => {
   let result: any[] = []
   defaultMenu.map((item: any) => {
-    menu.map((innerItem:any) => {
-      if(item.name === innerItem.menuName){
+    menu.map((innerItem: any) => {
+      if (item.name === innerItem.menuName) {
         let routes: any[] = []
-        if(item.routes.length > 0 && innerItem.children.length > 0){
-          routes = menuPowerFilter(innerItem.children , item.routes)
+        if (item.routes.length > 0 && innerItem.children.length > 0) {
+          routes = menuPowerFilter(innerItem.children, item.routes)
         }
         result.push({
           ...item,
@@ -305,18 +305,18 @@ const SearchInput = () => {
   );
 };
 
-const App: React.FC =  () => {
+const App: React.FC = () => {
   const [settings, setSetting] = useState<Partial<ProSettings> | undefined>({
     fixSiderbar: true,
   });
   const navigate = useNavigate()
   const [num, _] = useState(10);
-  const [users , dispatch] = useReducer(userReducer , initState)
-  const _dispatch = useCallback(dispatch , [])  //缓存函数
+  const [users, dispatch] = useReducer(userReducer, initState)
+  const _dispatch = useCallback(dispatch, [])  //缓存函数
   const contextValue: any = useMemo(() => ({
-   users,
+    users,
     dispatch: _dispatch
-  }) , [_dispatch , users]) //渲染优化？
+  }), [_dispatch, users]) //渲染优化？
   if (typeof document === 'undefined') {
     return <div />;
   }
@@ -328,9 +328,9 @@ const App: React.FC =  () => {
         overflow: 'auto',
       }}
     >
-    <UserContext.Provider value={contextValue}>
-      <ProConfigProvider hashed={false}>
-        {/* <ConfigProvider
+      <UserContext.Provider value={contextValue}>
+        <ProConfigProvider hashed={false}>
+          {/* <ConfigProvider
           getTargetContainer={() => {
             return document.getElementById('test-pro-layout') || document.body;
           }}
@@ -368,12 +368,12 @@ const App: React.FC =  () => {
             }}
             menu={{
               collapsedShowGroupTitle: true,
-              request:async (_ , defaultMenuData) => {
-                console.log('defaultMenuData' , defaultMenuData)
+              request: async (_, defaultMenuData) => {
+                console.log('defaultMenuData', defaultMenuData)
 
                 const menu: any[] = await getMenu()
-               const result: any =  menuPowerFilter(menu , defaultMenuData)
-                
+                const result: any = menuPowerFilter(menu, defaultMenuData)
+
                 return result
               }
             }}
@@ -414,7 +414,7 @@ const App: React.FC =  () => {
               ];
             }}
             headerTitleRender={(logo, title, _) => {
-              console.log('logo' , logo , title)
+              console.log('logo', logo, title)
               const defaultDom = (
                 <a>
                   {logo}
@@ -451,21 +451,21 @@ const App: React.FC =  () => {
             menuItemRender={(item: any, dom) => (
               <div
                 onClick={() => {
-                  console.log('item.path' , item.path)
+                  console.log('item.path', item.path)
                   navigate(item.path)
                 }}
               >
                 {dom}
               </div>
             )}
-            pageTitleRender={(props: any , defaultPageTitle: any) => {
-              if(props.pathname.includes('/vue-child')){
+            pageTitleRender={(props: any, defaultPageTitle: any) => {
+              if (props.pathname.includes('/vue-child')) {
                 return 'vue 微应用'
               }
-              if(props.pathname.includes('/dashboard')){
+              if (props.pathname.includes('/dashboard')) {
                 return '分析页'
               }
-              console.log('defaultPageTitle' , defaultPageTitle)
+              console.log('defaultPageTitle', defaultPageTitle)
               return defaultPageTitle
             }}
             {...settings}
@@ -494,17 +494,17 @@ const App: React.FC =  () => {
                 //   更新 users
                 // </Button>,
               ]}
-              // subTitle={`${users[0].name} ${users[0].age}`}
-              // footer={[
-              //   <Button key="3">重置</Button>,
-              //   <Button key="2" type="primary">
-              //     提交
-              //   </Button>,
-              // ]}
+            // subTitle={`${users[0].name} ${users[0].age}`}
+            // footer={[
+            //   <Button key="3">重置</Button>,
+            //   <Button key="2" type="primary">
+            //     提交
+            //   </Button>,
+            // ]}
             >
               <ProCard
                 style={{
-                  height: '200vh',
+                  height: '100vh',
                   minHeight: 800,
                 }}
               >
@@ -526,9 +526,9 @@ const App: React.FC =  () => {
               disableUrlParams={false}
             />
           </ProLayout>
-        {/* </ConfigProvider> */}
-      </ProConfigProvider>
-    </UserContext.Provider>
+          {/* </ConfigProvider> */}
+        </ProConfigProvider>
+      </UserContext.Provider>
     </div>
   );
 };

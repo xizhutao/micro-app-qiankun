@@ -2577,6 +2577,13 @@
   resolved "https://registry.npmjs.org/@types/d3-timer/-/d3-timer-2.0.1.tgz#ffb6620d290624f3726aa362c0c8a4b44c8d7200"
   integrity sha512-TF8aoF5cHcLO7W7403blM7L1T+6NF3XMyN3fxyUolq2uOcFeicG/khQg/dGxiCJWoAcmYulYN7LYSRKO54IXaA==
 
+"@types/echarts@^4.9.18":
+  version "4.9.18"
+  resolved "https://registry.npmjs.org/@types/echarts/-/echarts-4.9.18.tgz#6a789192ae7e958e5e11b1efdeab0794a54d0a31"
+  integrity sha512-Qav4M1i1qmPemMywMnDGIbvIBB/9pdrDKLI1dyMho4Yz/ldCB3ry2zGeH0UhAhgmaoPgwYrCDo8xd1UeByz+rw==
+  dependencies:
+    "@types/zrender" "*"
+
 "@types/eslint-scope@^3.7.3":
   version "3.7.4"
   resolved "https://registry.npmmirror.com/@types/eslint-scope/-/eslint-scope-3.7.4.tgz#37fc1223f0786c39627068a12e94d6e6fc61de16"
@@ -2769,6 +2776,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/zrender@*":
+  version "4.0.3"
+  resolved "https://registry.npmjs.org/@types/zrender/-/zrender-4.0.3.tgz#d18b31648b2f11b9ec672a560836e1887a965ec1"
+  integrity sha512-EPI269lkHNsObwILJ1k1z7znLjKyePuWRy/XKK0shSGpBb9cIX307arcwJV4+2NeZj5wEjN06r4D8yFv7sI06g==
+
 "@typescript-eslint/eslint-plugin@^5.4.0", "@typescript-eslint/eslint-plugin@^5.61.0":
   version "5.61.0"
   resolved "https://registry.npmmirror.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-5.61.0.tgz#a1a5290cf33863b4db3fb79350b3c5275a7b1223"
@@ -2883,9 +2895,9 @@
   resolved "https://registry.npmmirror.com/@vue/babel-helper-vue-transform-on/-/babel-helper-vue-transform-on-1.1.5.tgz#a976486b21e108e545524fe41ffe3fc9bbc28c7f"
   integrity sha512-SgUymFpMoAyWeYWLAY+MkCK3QEROsiUnfaw5zxOVD/M64KQs8D/4oK6Q5omVA2hnvEOE0SCkH2TZxs/jnnUj7w==
 
-"@vue/babel-plugin-jsx@^1.0.3":
+"@vue/babel-plugin-jsx@^1.0.3", "@vue/babel-plugin-jsx@^1.1.5":
   version "1.1.5"
-  resolved "https://registry.npmmirror.com/@vue/babel-plugin-jsx/-/babel-plugin-jsx-1.1.5.tgz#5088bae7dbb83531d94df3742ff650c12fd54973"
+  resolved "https://registry.npmjs.org/@vue/babel-plugin-jsx/-/babel-plugin-jsx-1.1.5.tgz#5088bae7dbb83531d94df3742ff650c12fd54973"
   integrity sha512-nKs1/Bg9U1n3qSWnsHhCVQtAzI6aQXqua8j/bZrau8ywT1ilXQbK4FwEJGmU8fV7tcpuFvWmmN7TMmV1OBma1g==
   dependencies:
     "@babel/helper-module-imports" "^7.22.5"
@@ -5224,6 +5236,13 @@ easy-stack@1.0.1:
   resolved "https://registry.npmmirror.com/easy-stack/-/easy-stack-1.0.1.tgz#8afe4264626988cabb11f3c704ccd0c835411066"
   integrity sha512-wK2sCs4feiiJeFXn3zvY0p41mdU5VUgbgs1rNsc/y5ngFUijdWd+iIN8eoyuZHKB8xN6BL4PdWmzqFmxNg6V2w==
 
+echarts@4.0.1:
+  version "4.0.1"
+  resolved "https://registry.npmjs.org/echarts/-/echarts-4.0.1.tgz#59dbf1099acd299c1d221208eb9d41ae25f755f8"
+  integrity sha512-02bNHAwyoeDrxPESAUn8cFRg0g1z69ss7AcXcKFcV4ITKseO0rz1tJ64T94MUElU6FMmxja1tRxbqnIyHTo+Ng==
+  dependencies:
+    zrender "4.0.0"
+
 ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.npmmirror.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
@@ -7484,6 +7503,11 @@ lerna@^6.6.1:
     write-pkg "4.0.0"
     yargs "16.2.0"
     yargs-parser "20.2.4"
+
+less-loader@^11.1.3:
+  version "11.1.3"
+  resolved "https://registry.npmjs.org/less-loader/-/less-loader-11.1.3.tgz#1bb62d6ca9bf00a177c02793b54baac40f9be694"
+  integrity sha512-A5b7O8dH9xpxvkosNrP0dFp2i/dISOJa9WwGF3WJflfqIERE2ybxh1BFDj5CovC2+jCE4M354mk90hN6ziXlVw==
 
 less@^4.1.3:
   version "4.1.3"
@@ -12140,3 +12164,8 @@ yorkie@^2.0.0:
     is-ci "^1.0.10"
     normalize-path "^1.0.0"
     strip-indent "^2.0.0"
+
+zrender@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npmjs.org/zrender/-/zrender-4.0.0.tgz#908935151329fa95145a333d186edd4011cf86c5"
+  integrity sha512-yb9gbnjg7BoMn5D01fX1hj788/CQgyIt+byUYdbgTZTz9TOpBy/b3m0Rx+TDT1kjfQIWWhE+HOkaAwJxbcCt1A==

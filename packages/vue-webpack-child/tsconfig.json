@@ -10,6 +10,8 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false,
+    "allowJs": true,
     "useDefineForClassFields": true,
     "sourceMap": true,
     "baseUrl": ".",

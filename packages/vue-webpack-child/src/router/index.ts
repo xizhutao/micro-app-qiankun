@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import HomeView from "../views/HomeView.vue";
 import AboutView from "../views/AboutView.vue";
+import BigScreen from '@/views/BigScreen/index.vue'
 const _window = window as any;
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
-    component: HomeView,
+    component: BigScreen,
   },
   {
     path: "/about",
