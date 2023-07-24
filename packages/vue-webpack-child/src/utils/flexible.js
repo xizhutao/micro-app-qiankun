@@ -1,9 +1,16 @@
-(function flexible(window, document) {
+(function flexible (window, document) {
+  var docEl
+  const qiankunRoot = document.querySelector('#__qiankun_microapp_wrapper_for_micro_app__')
+  // if (qiankunRoot) {
+  //   docEl = qiankunRoot
+  // } else {
+  //  var docEl = document.documentElement
+  // }
   var docEl = document.documentElement
   var dpr = window.devicePixelRatio || 1
 
   // adjust body font size
-  function setBodyFontSize() {
+  function setBodyFontSize () {
     if (document.body) {
       document.body.style.fontSize = (12 * dpr) + 'px'
     }
@@ -14,8 +21,8 @@
   setBodyFontSize();
 
   // set 1rem = viewWidth / 10
-  function setRemUnit() {
-    var rem = docEl.clientWidth / 20
+  function setRemUnit () {
+    var rem = docEl.clientWidth / 26
     docEl.style.fontSize = rem + 'px'
   }
 

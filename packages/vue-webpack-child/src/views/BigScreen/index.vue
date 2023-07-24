@@ -1037,7 +1037,7 @@ export default {
         ["西安", XAData],
         ["西宁", XNData],
         ["银川", YCData],
-      ].forEach(function (item, i) {
+      ].forEach(function (item: any, i) {
         series.push(
           {
             name: item[0] + " Top3",
